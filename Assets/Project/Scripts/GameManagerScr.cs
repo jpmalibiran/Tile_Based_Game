@@ -94,7 +94,7 @@ public class GameManagerScr : MonoBehaviour{
             available_Tile_List.RemoveAt(tile_holder); 
         }
 
-        //Generate Quarter Resources (Yellow)
+        //Generate Quarter Resources (orangeRed)
         //Loop for each resource cluster 
         for (int cluster_index = 0; cluster_index < cluster_Coord_List.Count; cluster_index++) {
             //Loop 5 times for the y axis of the 5x5 resource cluster
@@ -123,13 +123,13 @@ public class GameManagerScr : MonoBehaviour{
         //Generate Half Resources (Orange)
         //Loop for each resource cluster 
         for (int cluster_index = 0; cluster_index < cluster_Coord_List.Count; cluster_index++) {
-            //Loop 5 times for the y axis of the 3x3 resource cluster
+            //Loop 3 times for the y axis of the 3x3 resource cluster
             for (int resource_index_y = ((int)cluster_Coord_List[cluster_index].y - 1); resource_index_y <= ((int)cluster_Coord_List[cluster_index].y + 1); resource_index_y++) {
                 //Do not mark outside of tile map y bound.
                 if (resource_index_y >= y_size || resource_index_y < 0) {
                     continue;
                 }
-                //Loop 5 times for the x axis of the 3x3 resource cluster
+                //Loop 3 times for the x axis of the 3x3 resource cluster
                 for (int resource_index_x = ((int)cluster_Coord_List[cluster_index].x - 1); resource_index_x <= ((int)cluster_Coord_List[cluster_index].x + 1); resource_index_x++) {
                     //Do not mark outside of tile map x bound.
                     if (resource_index_x >= x_size || resource_index_x < 0) {
@@ -144,7 +144,7 @@ public class GameManagerScr : MonoBehaviour{
             }
         }
 
-        //Generate Max (Full) Resources (OrangeRed)
+        //Generate Max (Full) Resources (Yellow)
         //Loop for each resource cluster 
         for (int cluster_index = 0; cluster_index < cluster_Coord_List.Count; cluster_index++) {
             m_Tile_Array[(int)cluster_Coord_List[cluster_index].x, (int)cluster_Coord_List[cluster_index].y] = TileType.MaxResource;
@@ -179,7 +179,8 @@ public class GameManagerScr : MonoBehaviour{
 
         m_Tile_Transform_Array = new Transform[m_Tile_Array.GetLength(0), m_Tile_Array.GetLength(1)];
 
-        //Minimal Resource amount IS NOT randomized per tile
+        //Minimal Resource amount IS NOT randomized per tile; it's randomized per game.
+
         m_Random_Min_Resource_Value = Random.Range(m_Core_Resource_Max_Amount / 16, m_Core_Resource_Max_Amount / 8);
 
         for (int y_index = 0; y_index < m_Tile_Array.GetLength(1); y_index++) {
