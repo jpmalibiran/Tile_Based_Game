@@ -48,7 +48,7 @@ public class GameManagerScr : MonoBehaviour{
     private bool bIs_In_Extract_Mode = false; //true: extract mode; false: scan mode
 
     private void Start() {
-        NewGame(); 
+        //NewGame(); //Disabled to adhere to Assignment 1 criteria #3 "This ‘game’ must be treated like a 2D minigame pop-up..."
     }
 
     private void Update() {
@@ -461,6 +461,7 @@ public class GameManagerScr : MonoBehaviour{
 
         if (m_Console_Manager_Ref) {
             m_Console_Manager_Ref.UpdateStats(m_Resource_Counter, m_Scans_Left, m_Extractions_Left);
+            m_Console_Manager_Ref.ShowUI(1, true);
 
             m_Console_Manager_Ref.UpdateChat("[Notice] New Game Started. How to play:");
             m_Console_Manager_Ref.UpdateChat("    - Try to extract as much resources as you can!");

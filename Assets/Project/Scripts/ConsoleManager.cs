@@ -4,6 +4,8 @@ using UnityEngine;
 using UnityEngine.UI;
 
 public class ConsoleManager : MonoBehaviour{
+
+    [SerializeField] private GameObject m_Tile_Based_Gane_UI;
     [SerializeField] private Text m_Feed_Ref;
     [SerializeField] private Text m_Stat_Ref;
 
@@ -42,5 +44,13 @@ public class ConsoleManager : MonoBehaviour{
         string msgBoxMessageFull = "";
         msgBoxMessageFull = "Resources: " + resources + "\nScans Left: " + scans + "\nExtracts Left: " + extracts;
         m_Stat_Ref.text = msgBoxMessageFull;
+    }
+
+    public void ShowUI(int gameNum, bool set) {
+        if (gameNum == 1) {
+            if (m_Tile_Based_Gane_UI) {
+                m_Tile_Based_Gane_UI.SetActive(set);
+            }
+        }
     }
 }
